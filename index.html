@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Popup</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+
+    body {
+      font-family: 'Open Sans';
+      font-weight: 300;
+      background-color: #D6E1E5;
+    }
+
+    h1 {
+      color: #DB5B33;
+      font-weight: 300;
+      text-align: center;
+    }
+    .overlay{
+        position: fixed;
+        top: 0;bottom: 0;right: 0;left: 0;
+        background-color: rgba(0,0,0,0.3);
+        visibility: hidden;
+        opacity: 0;
+        z-index: 4;
+    }
+    .popup.active,.overlay.active{
+        visibility: visible;
+        opacity: 1;}
+    .popup{
+        top: 0;left: 50%;
+        transform: translateX(-50%);
+        position: fixed;
+        height: 210px;width: 550px;background-color: #fff;
+        margin: 20px auto;
+        padding: 5px 20px;
+        z-index: 5;
+        visibility: hidden;
+        opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Popup</h1>
+    <div class="popup" >
+        <h1>JavaScript Popup</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <button class="btn-close" onclick="activeX()">X</button>
+        <input type="text" id="todo">
+        <button class="btn-ok" onclick="inputMess()">OK</button>
+        <button class="btn-cancel" onclick="activeX()">Cancel</button>
+    </div>
+    <div class="overlay" onclick="activeX()">
+    </div>
+  <button class="toggle-popup" onclick="active()">show popup</button>
+
+  <p class="popup-message"></p>
+  <script>
+    function inputMess(){
+        var message = document.getElementById("todo").value;
+        var memo =document.getElementsByClassName("popup-message");
+        memo[0].innerHTML+="from popup : "+message+"<br/>";
+    }
+    function active(){
+        document.getElementsByClassName("popup")[0].classList.add("active");
+        document.getElementsByClassName("overlay")[0].classList.add("active");
+    }
+    function activeX(){
+        document.getElementsByClassName("popup")[0].classList.remove("active");
+        document.getElementsByClassName("overlay")[0].classList.remove("active");
+        document.getElementById("todo").value = null;
+    }
+  </script>
+</body>
+</html>
