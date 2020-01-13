@@ -26,8 +26,6 @@
         visibility: hidden;
         z-index: 4;
     }
-    .popup.active,.overlay.active{
-        visibility: visible;}
     .popup{
         top: 0;left: 50%;
         transform: translateX(-50%);
@@ -36,8 +34,8 @@
         margin: 20px auto;
         padding: 5px 20px;
         z-index: 5;
-        visibility: hidden;
-    }
+        visibility: hidden;}
+    .popup.active,.overlay.active{visibility: visible;}
   </style>
 </head>
 <body>
