@@ -27,26 +27,36 @@
         z-index: 4;
     }
     .popup{
-        top: 0;left: 50%;
-        transform: translateX(-50%);
-        position: fixed;
-        height: 210px;width: 550px;background-color: #fff;
-        margin: 20px auto;
-        padding: 5px 20px;
-        z-index: 5;
-        visibility: hidden;}
+      top: 20px; 
+      left: 50%;
+      transform: translateX(-50%);
+      position: fixed;
+      height: 210px;width: 550px;background-color: #fff;
+      padding: 5px 20px;
+      z-index: 5;
+      visibility: hidden;}
+    .box{
+      margin: 0 auto;
+      height: 193px;width: 100%;
+      position: relative;
+    }
+    .box .btn-close {
+      position: absolute;top: 0; right: 0;
+    }
     .popup.active,.overlay.active{visibility: visible;}
   </style>
 </head>
 <body>
   <h1>JavaScript Popup</h1>
-    <div class="popup" >
+    <div class="popup">
+      <div class="box">
         <h1>JavaScript Popup</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
         <button class="btn-close" onclick="activeX()">X</button>
         <input type="text" id="todo">
         <button class="btn-ok" onclick="inputMess()">OK</button>
         <button class="btn-cancel" onclick="activeX()">Cancel</button>
+      </div>
     </div>
     <div class="overlay" onclick="activeX()">
     </div>
