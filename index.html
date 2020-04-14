@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Popup</title>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
   <style>
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
 
@@ -43,41 +44,112 @@
     .box .btn-close {
       position: absolute;top: 0; right: 0;
     }
+    ul,li{list-style: none; margin: 0; padding: 0;}
+    .todoList{width: 100%; text-align: center;}
+    ul{width: 500px; display: block; margin: 0 auto;position: relative; margin-top: 20px;}
     .popup.active,.overlay.active{visibility: visible;}
+    .addList{ text-align: center; text-align: center; position: relative;}
+    .todoList .far {margin-right: 10px;}
+    .todoList ul li{height: 80px; width:calc(100% - 40px); text-align: left; 
+    border-bottom: 1px solid rgb(52, 87, 133); padding: 20px; 
+    background-color: rgb(66, 148, 255); line-height: 80px; display: inline-block; position: relative;}
+    .todoList .todo{
+      width: calc(100% - 120px);
+    }
+    .todoList .trash,.todoList .pencil {
+      line-height: 40px;
+      width: 120px; 
+      height: 40px; color: white; border-radius: 10px; font-size: 20px; 
+      background-color: red; display: inline-block; text-align: center;
+    }
+    .todoList .trash{
+      position: absolute; bottom: 12px; right: 20px;
+    }
+    .todoList .pencil{
+      position: absolute; top: 12px; right: 20px;
+    }
   </style>
 </head>
-<body>
-  <h1>JavaScript Popup</h1>
-    <div class="popup">
-      <div class="box">
-        <h1>JavaScript Popup</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-        <button class="btn-close" onclick="activeX()">X</button>
-        <input type="text" id="todo">
-        <button class="btn-ok" onclick="inputMess()">OK</button>
-        <button class="btn-cancel" onclick="activeX()">Cancel</button>
-      </div>
-    </div>
-    <div class="overlay" onclick="activeX()">
-    </div>
-  <button class="toggle-popup" onclick="active()">show popup</button>
 
-  <p class="popup-message"></p>
+<body>
+  <h1>TodoList</h1>
+  <form action="#" class="addList" onsubmit="inputMess()">
+    <input type="text" id="todo"/> <button type="submit">submit</button>
+  </form>
+  <div class="todoList"></div>
+
   <script>
+    let todos = [
+      {
+        idx: 1,
+        name: "test",
+        modify: false,
+        finish: true,
+      }
+    ];
+    inputMess();
+    let idx = 2;
     function inputMess(){
-        var message = document.getElementById("todo").value;
-        var memo =document.getElementsByClassName("popup-message");
-        memo[0].innerHTML+="from popup : "+message+"<br/>";
-    }
-    function active(){
-        document.getElementsByClassName("popup")[0].classList.add("active");
-        document.getElementsByClassName("overlay")[0].classList.add("active");
-    }
-    function activeX(){
-        document.getElementsByClassName("popup")[0].classList.remove("active");
-        document.getElementsByClassName("overlay")[0].classList.remove("active");
-        document.getElementById("todo").value = null;
-    }
+      const todoName = document.querySelector("#todo").value;
+      todoName?
+      todos.push({
+        idx:idx++,
+        name:todoName,
+        modify: false,
+        finish : false,
+      }):{};
+      const todoList = document.querySelector(".todoList");
+      todoList.innerHTML ="";
+      const ul = document.createElement('ul');
+      const td = todos.map(({idx:id,name,modify,finish:done})=>{
+        const li = document.createElement("li");
+        const div = document.createElement("div");
+        div.classList.add("todo");
+        const input = document.createElement("input");
+        input.id= "input_todo";
+        input.value = name;
+
+        div.addEventListener("click",(e)=>{
+          for(let i = 0 ; i < todos.length;i++){
+            todos[i].name === name? todos[i].finish =! todos[i].finish : {};
+            inputMess();
+          }
+        });
+        done?  ( div.innerHTML += "<i class='far fa-check-square'></i>"):(div.innerHTML += "<i class='far fa-square'></i>");
+        const trash = document.createElement('div');
+        trash.innerHTML+="<i class='fas fa-trash'></i>";
+        trash.classList.add('trash');
+        const pencil = document.createElement('div');
+        pencil.innerHTML+="<i class='fas fa-pen'></i>";
+        pencil.classList.add('pencil');
+        trash.addEventListener("click",(e)=>{
+          todos = todos.filter(({idx,name,finish:done})=>{
+            return idx!==id;
+          });
+          inputMess();
+        })
+        pencil.addEventListener("click",(e)=>{
+          
+          for(let i = 0 ; i < todos.length;i++){
+            if(modify&&todos[i].idx === id){
+              todos[i].name = input.value; 
+            }
+            todos[i].idx === id? todos[i].modify =! todos[i].modify : {};
+            inputMess();
+          }
+          
+        });
+        
+        
+        div.innerHTML += "  todo : " + name;
+        modify? li.appendChild(input):li.appendChild(div);
+        li.append(trash);
+        li.append(pencil);
+        ul.append(li);
+        todoList.append(ul);
+      });
+      document.querySelector("#todo").value='';
+    };
   </script>
 </body>
 </html>
