@@ -1,0 +1,122 @@
+
+*{margin:0;padding:0}
+h2{text-align:left}
+h3{text-align:left}
+h1,h2,h3,h4,h5,h6,strong{font-weight:bold}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+abbr,acronym{border-bottom:1px dotted #000;cursor:help}
+em{font-style:normal}
+ol li{list-style:none}
+ul li{list-style:none}
+li{list-style:none}
+th,td{padding:0}
+th{font-weight:bold;text-align:center}
+fieldset{border:0;}
+.accessibility,legend{visibility:hidden;overflow:hidden;position:absolute;width:0;height:0;font-size:0}
+caption,.invisible{visibility:hidden !important;overflow:hidden !important;position:static;width:0 !important;height:0 !important;margin:0 !important;padding:0 !important;font-size:0 !important;line-height:0 !important;text-indent:-9999px !important}
+
+input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em}
+label,.btn{cursor:pointer}
+
+.fl{float:left}
+.fr{float:right}
+
+body{margin-left:auto;margin-right:auto;/* font-size:small;  for IE */
+/* font:x-small; /* for IE in quirks mode */
+/* center the page */
+background-color:#fff;font-family:'Malgun Gothic', Dotum,'돋움',AppleGothic,Lucida Grande,Verdana,Arial,Tahoma,sans-serif;font-size:11px;color:#69696B;position: relative;}   /* 20161024 폰트변경 */
+
+/**
+ * Nudge down to get to 13px equivalent for these form elements
+ */
+input,button,textarea{font-family:'Malgun Gothic', Dotum,'돋움',AppleGothic,Lucida Grande,Verdana,Arial,Tahoma,sans-serif;font-size:11px;color:#4D4D4D;vertical-align:middle}/*201303 명도대비 수정*/     /* 20161024 폰트변경 */
+select{font-family:'Malgun Gothic', Dotum,'돋움',AppleGothic,Lucida Grande,Verdana,Arial,Tahoma,sans-serif;font-size:12px;vertical-align:middle}     /* 20161024 폰트변경 */
+input.txt,input.sum,input.sum-f{width:auto;height:18px;margin:-1px 0;padding:0 0 0 5px;border:1px solid #ccc;line-height:18px;color:#4D4D4D}/*201303 명도대비 수정*/
+input.chk{width:13px;height:13px;margin:0 2px 0 0}
+table{border-collapse:collapse;font-size:inherit;font:100%;text-align:left;border-spacing:0;width: 100%;}
+pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%}
+button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    visibility: visible;
+    cursor: pointer;
+}
+
+a:link{color:#4d4d4d;text-decoration:none}
+a:visited{color:#4d4d4d;text-decoration:none}
+a:hover{color:#4d4d4d;text-decoration:underline}
+a:active{color:#4d4d4d;text-decoration:none}
+a:focus{text-decoration:underline}
+table a {font-size: 12px;}
+form,img,a,iframe{border-style:none}
+img{vertical-align:top}
+.datatable th{
+    padding-left: 15px;
+    font-weight: normal;
+    color: #898989;
+    text-align-last: left;
+}
+
+.hidden{
+    visibility: hidden;
+    position: absolute;
+    font-size: 0;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+body{
+    background-color: #f5f6f7;
+    position: relative;
+    width: 100vw;
+}
+input{box-sizing: border-box; }
+select{border: 0 ;}
+form{width: 100%;}
+/*상단로고*/
+header{text-align: center; margin-top: 50px;}
+header h1 {display: block; margin: 0 auto;}
+.container{width: 460px; margin: 0 auto;}
+.inputBox {
+    width: calc(100% - 30px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+.inputBox input {padding: 0; width: 100%;height: 100%; display: block; font-size: 20px; border: 0;}
+
+.idPw{margin-bottom: 50px;}
+.idPw .inputBox{padding-left: 20px; margin-top: 5px;}
+.idPw h3{margin-top: 30px; font-size: 17px;}
+
+.personal select{width: 100%;font-size: 20px; padding-left: 20px; margin-top: 5px;}
+.personal .inputBox{font-size: 20px; padding-left: 20px; margin-top: 5px;}
+.personal h3{margin-top: 30px; font-size: 17px;}
+.personal .birth{
+    width: 100%;
+}
+.personal .birth{ margin-top: 10px;}
+.personal .birth .inputBox {height: 26.4px;width: 25.52% ;  font-size: 20px; display: inline-block;margin-right: 2px;}
+.personal .birth .inputBox:last-child {margin-right: 0;}
+.personal .birth select {font-size: 15px;}
+
+.phoneCheck{width: 100%;}
+.phoneCheck h3{margin-top: 30px; font-size: 17px;}
+.phoneCheck .inputBox{font-size: 20px; padding-left: 20px; margin-top: 5px;}
+.phoneCheck .checkNumber{position: relative; margin-top: 5px; width: 100%;}
+.phoneCheck .checkNumber .inputBox {width: 60% ; display: inline-block; margin-top: 0;}
+.phoneCheck .checkNumber #btnsend {position: absolute; top: 0; right: 0; width: 30%; height: 100%; text-align: center; background-color: rgb(40, 126, 255);}
+.phoneCheck .checkNumber #btnsend span{display: block;font-weight: bold; color:white; font-size: 15px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+
+.container button{width: 100%; height: 50px; text-align: center; background-color: rgb(43, 37, 65); color: white; font-size: 20px; margin-top: 20px; margin-bottom: 50px;}
+.alert{font-size: 13px; color:red;}
+.alert.green{color: rgb(67, 67, 221);}
+
+
+@media (max-width:460px){
+    .container{width: 100%;}
+}

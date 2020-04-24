@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./sytle.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="#"><img src="./img/NSHC_logo-300x137-160x80.png" alt="NSHC로고"></a>
+        </h1>
+    </header>
+    <form action="#">
+        <div class="container">
+            <div class="idPw">
+                <div class="id">
+                    <h3><label for="inputId">아이디</label></h3>
+                    <div class="inputBox"><input type="text" name="id" id="inputId"></div>
+                </div>
+                <div class="pw">
+                    <h3><label for="inputPw">비밀번호</label></h3>
+                    <div class="inputBox"><input type="password" name="password" id="inputPw"></div>
+                </div>
+                <div class="pw2">
+                    <h3><label for="inputPw2">비밀번호 재확인</label></h3>
+                    <div class="inputBox"><input type="password" name="password2" id="inputPw2"></div>
+                </div>
+                </div>
+            <div class="personal">
+                <div class="name">
+                    <h3><label for="inputName">이름</label></h3>
+                    <div class="inputBox"><input type="text" name="name" id="inputName"></div>
+                </div>
+                <h3><label for="inputBirth">생년월일</label></h3>
+                <div class="birth">
+                    <div class="inputBox"><input type="text" name="yy" id="inputBirth"></div>
+                    <div class="inputBox"><select type="text" name="mm" id="inputBirthMonth">
+                        <option value="">월</option>
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select></div>
+                    <div class="inputBox"><input type="text" name="dd" id="inputBirthDay"></div>
+                </div>
+                <h3><label for="inputGender">성별</label></h3>
+                <div class="inputBox"><select name="gender" id="inputGender">
+                    <option value="">성별</option>
+                    <option value="M">남자</option>
+                    <option value="F">여자</option>
+                </select></div>
+            </div>
+            <div class="phoneCheck">
+                <h3>휴대전화</h3>
+                <div class="inputBox"><input type="text" value="대한민국 +82" readonly></div>
+                <div class="checkNumber"><div class="inputBox"><input type="text"></div><a href="javascript:" id="btnsend"><span>인증번호 받기</span></a></div>
+                <div class="inputBox"><input type="text" id="checkNum" placeholder="인증번호를 입력하세요" readonly></div>
+            </div>
+            <button>가입하기</button>
+        </div>
+    </form>
+    <script>
+        function alertMessage(selecter, message){
+            let address =message+" .alert";
+            if(document.querySelector(selecter).value===""&&document.querySelector(address)===null){
+                let alert = document.createElement("div");
+                alert.classList.add("alert");
+                alert.innerText = `필수 정보입니다.`;
+                document.querySelector(message).append(alert);
+            }else if(document.querySelector(selecter).value===""){
+                document.querySelector(selecter).innerText = `필수 정보입니다.`;
+            }else if(document.querySelector(address)!==null){
+                document.querySelector(address).innerText="";
+            }
+        }
+        function compareValue(value1,value2,message,valueName){
+            let address = message+" .alert";
+            if(value1===value2&&document.querySelector(address)===null){
+                let alert = document.createElement("div");
+                alert.classList.add("alert");
+                alert.classList.add("green");
+                alert.innerText = `${valueName}이(가) 일치합니다.`;
+                document.querySelector(message).append(alert);
+            }else if(value1===value2){
+                if(!document.querySelector(address).classList.contains("green")){document.querySelector(address).classList.add("green")};
+                document.querySelector(address).innerText = `${valueName}가 일치합니다.`;
+            }else if(document.querySelector(address)===null){
+                let alert = document.createElement("div");
+                alert.classList.add("alert");
+                alert.innerText = `${valueName}가 일치하지 않습니다.`;
+                document.querySelector(message).append(alert);
+            }else{
+                if(document.querySelector(address).classList.contains("green")){document.querySelector(address).classList.remove("green")};
+                document.querySelector(address).innerText = `${valueName}가 일치하지 않습니다.`;
+            }
+        }
+        document.querySelector("#inputId").addEventListener("blur",()=>alertMessage("#inputId",".idPw .id"));
+        document.querySelector("#inputPw").addEventListener("blur",()=>alertMessage("#inputPw",".idPw .pw"));
+        document.querySelector("#inputName").addEventListener("blur",()=>alertMessage("#inputName",".personal .name"));
+        document.querySelector("#inputPw").addEventListener("change",()=>{
+            if(document.querySelector("#inputPw2").value){
+                compareValue(document.querySelector("#inputPw").value,document.querySelector("#inputPw2").value,".idPw .pw2","비밀번호");
+            }
+        });
+        document.querySelector("#inputPw2").addEventListener("change",()=>{compareValue(document.querySelector("#inputPw").value,document.querySelector("#inputPw2").value,".idPw .pw2","비밀번호")});
+        document.querySelector("#checkNum").addEventListener("blur",()=>{
+            if(!document.querySelector("#checkNum").hasAttribute("readonly")){
+                compareValue(document.querySelector("#checkNum").value,"123456",".phoneCheck","인증번호");
+            }
+        });
+        document.querySelector("#btnsend").addEventListener("click",()=>{
+            alert("인증번호는 123456입니다.")
+            document.querySelector("#checkNum").removeAttribute("readonly");
+        })
+    </script>
+</body>
+</html>
