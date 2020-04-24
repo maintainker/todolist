@@ -70,7 +70,7 @@
         </div>
     </form>
     <script>
-        function alertMessage(selecter, message){
+        function alertMessage(selecter, message){//필수정보 입력여부 확인 후 메세지 입력 selecter : 입력확인해야되는 input , message: alert가 들어가야될 위치
             let address =message+" .alert";
             if(document.querySelector(selecter).value===""&&document.querySelector(address)===null){
                 let alert = document.createElement("div");
@@ -84,6 +84,7 @@
             }
         }
         function compareValue(value1,value2,message,valueName){
+            //필수정보 입력여부 확인 후 메세지 입력 value1,2 : 비교해야되는 값 , message : alert가 들어가야될 위치, valueName : 일치하는 것의 이름
             let address = message+" .alert";
             if(value1===value2&&document.querySelector(address)===null){
                 let alert = document.createElement("div");
