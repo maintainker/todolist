@@ -75,6 +75,7 @@ body{
 }
 input{box-sizing: border-box; }
 select{border: 0 ; background-color: #fff;}
+
 /*상단로고*/
 header{text-align: center; margin-top: 50px;}
 header h1 {display: block; margin: 0 auto;}
@@ -94,11 +95,8 @@ header h1 {display: block; margin: 0 auto;}
 .personal select{width: 100%;font-size: 20px; padding-left: 20px; margin-top: 5px;}
 .personal .inputBox{font-size: 20px; padding-left: 20px; margin-top: 5px;}
 .personal h3{margin-top: 30px; font-size: 17px;}
-.personal .birth{
-    width: 100%;
-}
-.personal .birth{ margin-top: 10px;}
-.personal .birth .inputBox {height: 26.4px;width: 25.52% ;  font-size: 20px; display: inline-block;padding: 2.5vw; margin-right: 1vw;}
+.personal .birth{width: 100%; margin-top: 10px;}
+.personal .birth .inputBox {height: 26.4px;width: 25.52% ;  font-size: 20px; display: inline-block;}
 .personal .birth .inputBox:last-child {margin-right: 0;}
 .personal .birth select {font-size: 15px;}
 
@@ -106,7 +104,7 @@ header h1 {display: block; margin: 0 auto;}
 .phoneCheck h3{margin-top: 30px; font-size: 17px;}
 .phoneCheck .inputBox{font-size: 20px; padding-left: 20px; margin-top: 5px;}
 .phoneCheck .checkNumber{position: relative; margin-top: 5px; width: 100%;}
-.phoneCheck .checkNumber .inputBox {width: 60% ; display: inline-block; margin-top: 0;}
+.phoneCheck .checkNumber .inputBox {width: 55% ; display: inline-block; margin-top: 0;}
 .phoneCheck .checkNumber #btnsend {position: absolute; top: 0; right: 0; width: 30%; height: 100%; text-align: center; background-color: rgb(40, 126, 255);}
 .phoneCheck .checkNumber #btnsend span{display: block;font-weight: bold; color:white; font-size: 15px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
 
@@ -117,5 +115,6 @@ header h1 {display: block; margin: 0 auto;}
 
 @media (max-width:460px){
     .container{width: calc(100% - 40px); padding: 0 20px;}
+    .personal .birth .inputBox {padding: 2.5vw; margin-right: 1vw;}
     .phoneCheck .checkNumber #btnsend span{font-size: 12px;}
 }
